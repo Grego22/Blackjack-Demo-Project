@@ -5,17 +5,29 @@
    to watch the assertions pass as you write your code.
 
    Also remember, that the parameter `hand` will be an array, so
-   you'll need to parse through that first before you can start to 
+   you'll need to parse through that first before you can start to
    write your logic.
 */
 
-
-function handValue (hand) {
-
-
-  return;
+function handValue(hand) {
+	let total = 0
+	for (var i = 0; i < hand.length; i++) {
+		if (hand[i] === 'Q' || hand[i] === 'K' || hand[i] === 'J') {
+			total += 10
+		} else if (hand[i] === 'A' && total <= 10) {
+			total += 11
+		} else if (hand[i] === 'A' && total > 10) {
+			total += 1
+		} else if (hand[i] < 10) {
+			total += Number(hand[i])
+		} else if (total > 21) {
+			// couldnt get this line of code to work for assert [A J 8]
+			total -= 10
+		}
+	}
+	console.log(total)
+	return total
 }
-
 
 /* -----  Hints ------
 
